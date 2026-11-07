@@ -2,10 +2,16 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { cafes } from "../../data/cafes";
-import EtiquetaTueste from "@/app/components/EtiquetaTueste";
+import EtiquetaTueste from "../../components/EtiquetaTueste";
 
 interface Props {
   params: Promise<{ slug: string }>;
+}
+
+export function generateStaticParams() {
+  return cafes.map((cafe) => ({
+    slug: cafe.slug,
+  }));
 }
 
 export default async function DetalleCafe({ params }: Props) {

@@ -39,6 +39,13 @@ interface Props {
   }>;
 }
 
+// Indicamos a Next.js qué rutas debe generar durante la compilación.
+export function generateStaticParams() {
+  return metodos.map((metodo) => ({
+    slug: metodo.slug,
+  }));
+}
+
 export default async function DetalleMetodo({ params }: Props) {
   const { slug } = await params;
 

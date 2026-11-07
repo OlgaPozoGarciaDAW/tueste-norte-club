@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tueste Norte Club ☕
 
-## Getting Started
+Prototipo del área privada para los socios del Club Tueste Norte. Desarrollado con Next.js, React, TypeScript y Tailwind CSS.
 
-First, run the development server:
+## Características
+
+- Dashboard del socio con resumen de su suscripción.
+- Selector interactivo para cambiar el número de bolsas y actualizar el precio.
+- Catálogo de los cafés del mes.
+- Fichas individuales de cada café.
+- Página 404 para cafés que no existen.
+- Diseño responsive para móviles, tabletas y ordenadores.
+- Componentes reutilizables y navegación mediante Next.js.
+
+## Tecnologías
+
+- Next.js con App Router.
+- React.
+- TypeScript.
+- Tailwind CSS.
+- Node.js y npm.
+
+## Instalación y ejecución
+
+Clonar el repositorio y acceder a la carpeta:
+
+```bash
+cd tueste-norte-club
+```
+
+Instalar las dependencias:
+
+```bash
+npm install
+```
+
+Iniciar el servidor de desarrollo:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir http://localhost:3000 en el navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Organización del proyecto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app/`: páginas y rutas de la aplicación.
+- `src/app/components/`: componentes reutilizables.
+- `src/app/data/`: datos mock de los cafés.
+- `src/app/metodos/`: ejercicio de rutas y layouts.
+- `src/app/entradas/`: ejercicio de fetch a WordPress.
+- `src/app/globals.css`: estilos globales.
 
-## Learn More
+## Fuente de datos
 
-To learn more about Next.js, take a look at the following resources:
+El catálogo utiliza un módulo TypeScript con datos mock (`src/app/data/cafes.ts`). Se ha elegido esta opción porque el encargo permite utilizar datos simulados y el objetivo es enseñar el funcionamiento visual del área privada sin depender de WordPress.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Los datos del socio y de su suscripción también son simulados.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Componentes de React
 
-## Deploy on Vercel
+`EtiquetaTueste` es un Server Component porque únicamente recibe el nivel de tueste mediante props y muestra una etiqueta. No necesita interactividad.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`BotonFavorito` es un Client Component porque utiliza `useState` para alternar entre añadir y quitar un café de favoritos.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`SelectorBolsas` también es un Client Component porque necesita gestionar el estado del número de bolsas y actualizar el precio al interactuar con el usuario.
+
+## Ejercicios
+
+Los ejercicios de la semana 6 se encuentran dentro de las rutas de la aplicación:
+
+- Ejercicio 1: componentes `EtiquetaTueste` y `BotonFavorito`, utilizados en la página de inicio.
+- Ejercicio 2: rutas `/metodos` y `/metodos/[slug]`.
+- Ejercicio 3: ruta `/entradas`, con `loading.tsx` y `error.tsx` para controlar la carga y los errores de WordPress.
+
+## Alcance del prototipo
+
+Esta versión es una demostración visual. No incluye autenticación real, persistencia de cambios en una base de datos ni procesamiento de pagos. Estas funcionalidades se incorporarán en fases posteriores del proyecto.
