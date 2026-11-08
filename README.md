@@ -22,7 +22,13 @@ Prototipo del área privada para los socios del Club Tueste Norte. Desarrollado 
 
 ## Instalación y ejecución
 
-Clonar el repositorio y acceder a la carpeta:
+Clonar el repositorio:
+
+```bash
+git clone https://github.com/OlgaPozoGarciaDAW/tueste-norte-club.git
+```
+
+Acceder a la carpeta del proyecto:
 
 ```bash
 cd tueste-norte-club
@@ -40,22 +46,25 @@ Iniciar el servidor de desarrollo:
 npm run dev
 ```
 
-Abrir http://localhost:3000 en el navegador.
+Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
 
 ## Organización del proyecto
 
 - `src/app/`: páginas y rutas de la aplicación.
 - `src/app/components/`: componentes reutilizables.
-- `src/app/data/`: datos mock de los cafés.
-- `src/app/metodos/`: ejercicio de rutas y layouts.
-- `src/app/entradas/`: ejercicio de fetch a WordPress.
+- `src/app/data/`: datos simulados de los cafés.
+- `src/app/cafes/`: catálogo y fichas individuales de los cafés.
+- `src/app/metodos/`: ejercicio de rutas y páginas dinámicas.
+- `src/app/entradas/`: ejercicio de conexión con WordPress.
 - `src/app/globals.css`: estilos globales.
 
 ## Fuente de datos
 
-El catálogo utiliza un módulo TypeScript con datos mock (`src/app/data/cafes.ts`). Se ha elegido esta opción porque el encargo permite utilizar datos simulados y el objetivo es enseñar el funcionamiento visual del área privada sin depender de WordPress.
+El catálogo utiliza un módulo TypeScript con datos simulados (`src/app/data/cafes.ts`). Se ha elegido esta opción porque el encargo permite utilizar datos simulados y el objetivo es mostrar el funcionamiento del área privada sin depender de WordPress.
 
 Los datos del socio y de su suscripción también son simulados.
+
+La ruta `/entradas` utiliza la API REST de WordPress para recuperar las publicaciones. Para probar esta funcionalidad es necesario tener WordPress funcionando localmente mediante XAMPP.
 
 ## Componentes de React
 
@@ -69,9 +78,15 @@ Los datos del socio y de su suscripción también son simulados.
 
 Los ejercicios de la semana 6 se encuentran dentro de las rutas de la aplicación:
 
-- Ejercicio 1: componentes `EtiquetaTueste` y `BotonFavorito`, utilizados en la página de inicio.
-- Ejercicio 2: rutas `/metodos` y `/metodos/[slug]`.
-- Ejercicio 3: ruta `/entradas`, con `loading.tsx` y `error.tsx` para controlar la carga y los errores de WordPress.
+- **Ejercicio 1:** componentes `EtiquetaTueste` y `BotonFavorito`, utilizados en la aplicación.
+- **Ejercicio 2:** rutas `/metodos` y `/metodos/[slug]`, con navegación dinámica y gestión de rutas inexistentes.
+- **Ejercicio 3:** ruta `/entradas`, con `loading.tsx` y `error.tsx` para controlar la carga y los errores de WordPress.
+
+## Rutas del Club Tueste Norte
+
+- `/`: dashboard del socio.
+- `/cafes`: catálogo de cafés.
+- `/cafes/[slug]`: ficha individual de cada café.
 
 ## Alcance del prototipo
 

@@ -1,12 +1,9 @@
 
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { cafes } from "../../data/cafes";
 import EtiquetaTueste from "../../components/EtiquetaTueste";
-
-interface Props {
-  params: Promise<{ slug: string }>;
-}
 
 export function generateStaticParams() {
   return cafes.map((cafe) => ({
@@ -14,7 +11,11 @@ export function generateStaticParams() {
   }));
 }
 
-export default async function DetalleCafe({ params }: Props) {
+export default async function CafeDetalle({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const cafe = cafes.find((item) => item.slug === slug);
 
@@ -23,45 +24,58 @@ export default async function DetalleCafe({ params }: Props) {
   }
 
   return (
-    <main className="min-h-screen bg-[#faf8f5] px-5 py-12 md:px-10">
-      <div className="mx-auto max-w-3xl">
-        <Link
-          href="/cafes"
-          className="mb-8 inline-block font-semibold text-amber-800 hover:underline"
-        >
-          ← Volver a los cafés
-        </Link>
+    <main className="mx-auto max-w-5xl px-6 py-12">
+      <Link
+        href="/cafes"
+        className="text-sm font-semibold text-amber-800 hover:text-amber-950"
+      >
+        ← Volver al catálogo
+      </Link>
 
-        <article className="rounded-2xl border border-stone-200 bg-white p-8 shadow-sm">
-          <p className="font-semibold uppercase tracking-widest text-amber-800">
-            {cafe.origen}
+      <div className="mt-8 grid items-center gap-10 md:grid-cols-2">
+        <div className="relative min-h-80 overflow-hidden rounded-2xl bg-white">
+          <Image
+            src={cafe.imagen}
+            alt={`Café ${cafe.nombre}`}
+            fill
+            className="object-contain p-5"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
+
+        <div>
+          <p className="text-sm font-bold uppercase tracking-widest text-amber-800">
+            Café de origen
           </p>
 
-          <h1 className="mb-5 mt-2 text-4xl font-bold text-stone-900">
-            Café {cafe.nombre}
+          <h1 className="mt-3 text-4xl font-bold text-stone-900">
+            {cafe.nombre}
           </h1>
 
-          <EtiquetaTueste nivel={cafe.tueste} />
+          <p className="mt-2 text-stone-500">
+            Origen: {cafe.origen}
+          </p>
 
-          <div className="my-7 rounded-xl bg-amber-50 p-5">
-            <p className="font-semibold text-amber-900">
-              Notas de cata
-            </p>
-            <p className="mt-2 text-stone-700">{cafe.notas}</p>
+          <div className="mt-5">
+            <EtiquetaTueste nivel={cafe.tueste} />
           </div>
 
-          <h2 className="mb-3 text-2xl font-bold text-stone-900">
-            Sobre este café
+          <h2 className="mt-7 text-lg font-bold text-stone-900">
+            Notas de cata
           </h2>
 
-          <p className="leading-7 text-stone-600">
+          <p className="mt-2 leading-7 text-stone-600">
+            {cafe.notas}
+          </p>
+
+          <p className="mt-5 leading-7 text-stone-600">
             {cafe.descripcion}
           </p>
 
-          <p className="mt-8 text-2xl font-bold text-amber-900">
+          <p className="mt-7 text-3xl font-bold text-amber-900">
             {cafe.precio.toFixed(2).replace(".", ",")} €
           </p>
-        </article>
+        </div>
       </div>
     </main>
   );

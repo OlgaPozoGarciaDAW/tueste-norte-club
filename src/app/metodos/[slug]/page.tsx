@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+export const instant = false;
+
 const metodos = [
   {
     slug: "v60",

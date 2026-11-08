@@ -7,6 +7,7 @@ export interface Cafe {
   notas: string;
   descripcion: string;
   precio: number;
+  imagen: string;
 }
 
 export const cafes: Cafe[] = [
@@ -19,6 +20,7 @@ export const cafes: Cafe[] = [
     descripcion:
       "Un café equilibrado y aromático, con notas de cacao y cítricos. Ideal para disfrutar de una taza dulce y agradable.",
     precio: 12.2,
+    imagen: "/images/Guatemala.png",
   },
   {
     slug: "brasil",
@@ -29,6 +31,7 @@ export const cafes: Cafe[] = [
     descripcion:
       "Un café de cuerpo intenso y sabor dulce, con matices de chocolate y frutos secos.",
     precio: 10.9,
+    imagen: "/images/Brasil.png",
   },
   {
     slug: "colombia",
@@ -39,6 +42,7 @@ export const cafes: Cafe[] = [
     descripcion:
       "Un café redondo y equilibrado, con dulzor de caramelo y notas de chocolate.",
     precio: 11.9,
+    imagen: "/images/Colombia.png",
   },
   {
     slug: "etiopia",
@@ -49,5 +53,6 @@ export const cafes: Cafe[] = [
     descripcion:
       "Un café floral y afrutado, con una taza delicada y aromas cítricos.",
     precio: 12.5,
+    imagen: "/images/Etiopia.png",
   },
 ];
